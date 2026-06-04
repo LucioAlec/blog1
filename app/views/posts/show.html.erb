@@ -1,0 +1,12 @@
+<h1> Post <%= @post.title %> </h1>
+<h3> Description </h3>
+<section>
+<p> <%= @post.description %> </p>
+  <%= link_to "Edit", edit_post_path, class: "button" %>
+  <%= link_to "Delete", post_path, class: "button",
+      data: {turbo_method: :delete, turbo_confirm: "Sure?"}
+  %>
+  </section>
+<p>
+<%= link_to "Back to posts", posts_path %>
+</p>

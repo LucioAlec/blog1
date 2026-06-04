@@ -1,0 +1,10 @@
+<%= form_with model: @post do |f| %>
+  <%= f.label :Title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :Description %>
+  <%= f.text_field :description %>
+
+
+  <%= f.submit(@post.persisted? ? "Update Post" : "Create Post") %>
+  <%end%>
