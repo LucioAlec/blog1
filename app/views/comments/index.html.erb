@@ -1,0 +1,7 @@
+<h1> Comments for <%= @post.title %> </h1>
+  <% @comments.each do |c| %> 
+  <p>  <%= c.description %>, <%=c.created_at %> </p>
+  <%end%>
+<p>
+<%= link_to "Back to posts", posts_path %>
+</p>
