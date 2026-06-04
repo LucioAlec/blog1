@@ -2,10 +2,11 @@
 <h3> Description </h3>
 <section>
 <p> <%= @post.description %> </p>
-  <%= link_to "Edit", edit_post_path, class: "button" %>
-  <%= link_to "Delete", post_path, class: "button",
+  <%= link_to "Edit", edit_post_path(@post), class: "button" %>
+  <%= link_to "Delete", post_path(@post), class: "button",
       data: {turbo_method: :delete, turbo_confirm: "Sure?"}
   %>
+  <p> <%= link_to "Make a comment", new_post_comment_url(@post), class: "button" %> </p>
   </section>
 <p>
 <%= link_to "Back to posts", posts_path %>
