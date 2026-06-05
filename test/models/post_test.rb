@@ -1,7 +1,12 @@
 require "test_helper"
 
-class PostTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+describe Post do
+  describe "Validations" do
+    it "Should is invalid without a name" do
+      post = Post.new(title: "")
+      refute post.valid?
+
+      assert_includes post.errors[:title], "can't be blank"
+    end
+  end
 end

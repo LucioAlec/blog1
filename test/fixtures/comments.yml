@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyFirstPost
-  description: Just a Test with a simple test
+  description: First comment hahaha
+  post: one
 
 two:
-  title: MyString
   description: MyText
+  post: two
