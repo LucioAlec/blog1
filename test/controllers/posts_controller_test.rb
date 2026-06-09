@@ -3,20 +3,6 @@ require "test_helper"
 describe PostsController do
   let(:existing_post) { posts(:oldest) }
 
-  let(:valid_post_params) do
-    {
-      title: "Test",
-      description: "Just a test"
-    }
-  end
-
-  let(:invalid_post_params) do
-    {
-      title: nil,
-      description: "Just a test"
-    }
-  end
-
   describe "Index" do
     it "Should access the index page" do
       get "/posts"
@@ -54,7 +40,12 @@ describe PostsController do
     it "Should ignore attributes outside the strong params range " do
       assert_difference("Post.count", 1) do
         post posts_path, params:
-        { post: valid_post_params.merge(created_at: 10.years.ago) }
+        { post: {
+            title: "Test",
+            description: "Just a test",
+            created_at: 10.years.ago
+          } 
+        }
       end
 
       post_record = Post.last
@@ -66,7 +57,13 @@ describe PostsController do
 
     it "Should not create with invalid data" do
       assert_no_difference("Post.count") do
-        post posts_path, params: { post: invalid_post_params }
+        post posts_path, params: 
+        { 
+          post: {
+            title: nil,
+            description: "Just a test"
+          } 
+        }
       end
 
       assert_response :unprocessable_entity
@@ -101,7 +98,11 @@ describe PostsController do
     it "Should not update a post with invalid attributes" do
       assert_no_changes -> { existing_post.reload.title } do
         patch post_path(existing_post), params:
-        { post: invalid_post_params }
+        { post: {
+            title: "",
+            description: "Just a test"
+          } 
+        }
       end
 
       assert_response :unprocessable_entity

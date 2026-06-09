@@ -14,12 +14,13 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = Post.new(post_params)
+    @post = Post.new(post_params)
 
-    if post.save
-      redirect_to post, notice: "Post created successefully."
+    if @post.save
+      redirect_to @post, notice: "Post created successefully."
     else
-      render :new, status: :unprocessable_entity, alert: "Invalid input!"
+      flash.now[:alert] = "Invalid input!"
+      render :new, status: :unprocessable_entity
     end
   end
 
