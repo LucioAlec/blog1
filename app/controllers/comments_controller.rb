@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_post, only: [:index, :new, :create]
+  before_action :set_post, only: [ :index, :new, :create ]
   def index
     @comments = @post.comments
   end
@@ -18,10 +18,10 @@ class CommentsController < ApplicationController
       render :new, :unprocessable_entity
     end
   end
-    
 
 
-private 
+
+private
   def set_post
     @post = Post.find(params[:post_id])
   end
@@ -29,5 +29,4 @@ private
   def comments_params
     params.require(:comment).permit(:description)
   end
-
 end

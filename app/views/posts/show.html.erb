@@ -1,13 +1,20 @@
 <h1> Post <%= @post.title %> </h1>
 <h3> Description </h3>
 <section>
-<p> <%= @post.description %> </p>
+  <p> <%= @post.description %> </p>
   <%= link_to "Edit", edit_post_path(@post), class: "button" %>
   <%= link_to "Delete", post_path(@post), class: "button",
       data: {turbo_method: :delete, turbo_confirm: "Sure?"}
   %>
   <p> <%= link_to "Make a comment", new_post_comment_url(@post), class: "button" %> </p>
-  </section>
-<p>
+</section>
+  <p>
+
+  <h4> Comments for <%= @post.title %> </h4>
+  <% @comments.each do |c| %> 
+    <p>  <%= c.description %>, <%=c.created_at %> </p>
+  <%end%>
+
+
 <%= link_to "Back to posts", posts_path %>
 </p>

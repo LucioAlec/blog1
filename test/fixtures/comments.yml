@@ -2,8 +2,8 @@
 
 one:
   description: First comment hahaha
-  post: one
+  post: oldest
 
 two:
   description: MyText
-  post: two
+  post: newest
