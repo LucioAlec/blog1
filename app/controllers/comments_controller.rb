@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
       redirect_to post_comments_path(@post), notice: "OK"
     else
       flash.now[:alert] = "OOPS!"
-      render :new, :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 

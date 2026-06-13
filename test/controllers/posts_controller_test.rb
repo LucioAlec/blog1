@@ -11,7 +11,7 @@ describe PostsController do
     end
 
     it "Should order by creation date" do
-      get posts_path
+      get "/posts"
 
       expected = [ posts(:newest), posts(:oldest) ]
       assert_equal expected, Post.order(created_at: :desc).to_a
@@ -20,7 +20,7 @@ describe PostsController do
 
   describe "Show" do
     it "Should access a post show page" do
-      get post_path(existing_post)
+      get "/posts/#{existing_post.id}"
 
       assert_response :success
       assert_select "h1", "Post #{existing_post.title}"
@@ -29,7 +29,7 @@ describe PostsController do
 
   describe "New" do
     it "Should access a new post page" do
-      get new_post_path
+      get "/posts/new"
 
       assert_response :success
       assert_select "form"
@@ -37,14 +37,14 @@ describe PostsController do
   end
 
   describe "Create" do
-    it "Should ignore attributes outside the strong params range " do
+    it "Should ignore attributes outside the strong params range" do
       assert_difference("Post.count", 1) do
-        post posts_path, params:
+        post "/posts", params:
         { post: {
             title: "Test",
             description: "Just a test",
             created_at: 10.years.ago
-          } 
+          }
         }
       end
 
@@ -57,23 +57,23 @@ describe PostsController do
 
     it "Should not create with invalid data" do
       assert_no_difference("Post.count") do
-        post posts_path, params: 
-        { 
+        post "/posts", params:
+        {
           post: {
             title: nil,
             description: "Just a test"
-          } 
+          }
         }
       end
 
       assert_response :unprocessable_entity
-      # assert_equal "Invalid input!", flash[:alert]
+      assert_equal "Invalid input!", flash[:alert]
     end
   end
 
   describe "Edit" do
     it "Should access a edit post page" do
-      get edit_post_path(existing_post)
+      get "/posts/#{existing_post.id}/edit"
 
       assert_response :success
       assert_select "form"
@@ -83,7 +83,7 @@ describe PostsController do
   describe "Update" do
     it "Should update a post with valid attributes" do
       assert_changes -> { existing_post.reload.title }, to: "Test" do
-        patch post_path(existing_post), params: {
+        patch "/posts/#{existing_post.id}", params: {
           post: {
             title: "Test",
             description: "Just a test"
@@ -97,11 +97,11 @@ describe PostsController do
 
     it "Should not update a post with invalid attributes" do
       assert_no_changes -> { existing_post.reload.title } do
-        patch post_path(existing_post), params:
+        patch "/posts/#{existing_post.id}", params:
         { post: {
             title: "",
             description: "Just a test"
-          } 
+          }
         }
       end
 
@@ -112,7 +112,7 @@ describe PostsController do
   describe "Destroy" do
     it "Should delete a post" do
       assert_difference("Post.count", -1) do
-        delete post_path(existing_post)
+        delete "/posts/#{existing_post.id}"
       end
 
       assert_response :see_other
