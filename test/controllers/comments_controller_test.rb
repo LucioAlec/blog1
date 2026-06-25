@@ -4,14 +4,6 @@ describe CommentsController do
 let(:existing_post) { posts(:oldest) }
 let(:existing_comment) { comments(:one) }
 
-  describe "Index" do
-    it "Should access a index page for posts' comments" do
-      get "/posts/#{existing_comment.post_id}/comments"
-
-      assert_response :success
-    end
-  end
-
   describe "New" do
     it "Should access a new comment page" do
       get "/posts/#{existing_comment.post_id}/comments/new"
@@ -33,8 +25,8 @@ let(:existing_comment) { comments(:one) }
       end
 
       comment = Comment.last
-      assert_redirected_to "/posts/#{existing_post.id}/comments"
-      assert_redirected_to post_comments_path(existing_post)
+      assert_redirected_to "/posts/#{existing_post.id}"
+      assert_redirected_to post_path(existing_post)
 
       assert_equal "OK", flash[:notice]
 
