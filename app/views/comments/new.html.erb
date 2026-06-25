@@ -1,9 +1,4 @@
 <h1> Creating a new comment for <%=@post.title%> </h1>
 
-<%=form_with(model: [@post, @comment])  do |f| %>
-  <%= f.label :Description %>
-  <%= f.text_field :description %>
-
-
-  <%= f.submit %>
-<% end %>
+<%= render "form", post: @comment %>
+<%= link_to "Back to post", post_path(@post) %>

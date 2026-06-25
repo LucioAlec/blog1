@@ -1,0 +1,5 @@
+<%= render "shared/errors", object: @comment %>
+<h1> Editing <%=@post.title %> </h1>
+
+<%= render "form", post: @post, comment: @comment %>
+<%= link_to "Back to posts", posts_path(@post) %>

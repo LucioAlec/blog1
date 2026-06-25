@@ -1,0 +1,7 @@
+<%=form_with(model: [@post, @comment])  do |f| %>
+  <%= f.label :Description %>
+  <%= f.text_field :description %>
+
+
+  <%= f.submit(@comment.persisted? ? "Update comment" : "Create comment") %>
+<% end %>

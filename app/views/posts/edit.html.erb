@@ -2,3 +2,4 @@
 <h1> Editing <%=@post.title %> </h1>
 
 <%= render "form", post: @post %>
+<%= link_to "Back to posts", post_path(@post) %>

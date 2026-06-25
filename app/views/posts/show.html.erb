@@ -12,7 +12,14 @@
 
   <h4> Comments for <%= @post.title %> </h4>
   <% @comments.each do |c| %> 
-    <p>  <%= c.description %>, <%=c.created_at %> </p>
+    <p>  
+      <%= c.description %>, <%=c.created_at %>, 
+      <%= link_to "Edit", edit_post_comment_path(@post,c), class: "button" %>
+      <%= link_to "Delete", post_comment_path(@post,c), class: "button",
+        data: {turbo_method: :delete, turbo_confirm: "Sure?"} 
+      %> 
+    </p>
+
   <%end%>
 
 
