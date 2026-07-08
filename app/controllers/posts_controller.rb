@@ -39,7 +39,7 @@ class PostsController < ApplicationController
     @post.destroy
       redirect_to posts_path, status: :see_other, notice: "Post successfully deleted!"
   end
-end
+
 
 
 private
@@ -51,3 +51,4 @@ private
   def  set_post
     @post = Post.find(params[:id])
   end
+end

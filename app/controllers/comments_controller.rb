@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = @post.comments.new(comments_params)
+    @comment = @post.comments.new(comment_params)
 
     if @comment.save
       redirect_to post_path(@post), notice: "OK"
@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
   def edit ; end
 
   def update
-    if @comment.update(comments_params)
+    if @comment.update(comment_params)
       redirect_to @post, notice: "Comment updated successfully"
     else
       flash.now[:alert] = "Post not updated"
@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
-      redirect_to @post, notice: "Comment successfully deleted!"
+      redirect_to @post, status: :see_other, notice: "Comment successfully deleted!"
   end
 
 
@@ -44,7 +44,7 @@ private
     @comment = @post.comments.find(params[:id])
   end
 
-  def comments_params
+  def comment_params
     params.require(:comment).permit(:description)
   end
 end
