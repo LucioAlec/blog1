@@ -1,4 +1,4 @@
-<h1> Creating a new comment for <%=@post.title%> </h1>
+<h1 class= "mb-4 block"> Creating a new comment for <%=@post.title%> </h1>
 
 <%= render "form", post: @comment %>
-<%= link_to "Back to post", post_path(@post) %>
+<%= link_to "Back to post", post_path(@post), class: "inline-block bg-gray-500 text-white px-4 py-2 rounded mt-3" %>

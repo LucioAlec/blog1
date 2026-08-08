@@ -1,27 +1,53 @@
-<h1> Post <%= @post.title %> </h1>
-<h3> Description </h3>
-<section>
-  <p> <%= @post.description %> </p>
-  <%= link_to "Edit", edit_post_path(@post), class: "button" %>
-  <%= link_to "Delete", post_path(@post), class: "button",
+<h1 class= "text-3x1 font-bold mb-6">
+ Post <%= @post.title %>
+</h1>
+
+<h3 class="mb-5"> Description </h3>
+
+<section class= "mb-8">
+
+  <p class="mb-4"> 
+  <%= @post.description %> 
+  </p>
+  <div class= "flex gap-2 mb-4">
+  <%= link_to "Edit", edit_post_path(@post), class: "inline-block bg-blue-600 text-white px-5 py-2 rounded" %>
+  <%= link_to "Delete", post_path(@post), class: "inline-block bg-red-600 text-white px-5 py-2 rounded",
       data: {turbo_method: :delete, turbo_confirm: "Sure?"}
   %>
-  <p> <%= link_to "Make a comment", new_post_comment_url(@post), class: "button" %> </p>
+  </div>
+
+  <p> <%= link_to "Make a comment", new_post_comment_url(@post), 
+  class: "inline-block bg-green-600 text-white px-4 py-2 rounded" %> 
+  </p>
+
 </section>
-  <p>
+  
+<section class="mb-8">
+  <h4 class="text-1 font-bold mb-4"> Comments for <%= @post.title %> </h4>
 
-  <h4> Comments for <%= @post.title %> </h4>
+    
   <% @comments.each do |c| %> 
-    <p>  
-      <%= c.description %>, <%=c.created_at %>, 
-      <%= link_to "Edit", edit_post_comment_path(@post,c), class: "button" %>
-      <%= link_to "Delete", post_comment_path(@post,c), class: "button",
-        data: {turbo_method: :delete, turbo_confirm: "Sure?"} 
-      %> 
-    </p>
+    <div class="border rounded p-4 mb-4">
+      <p class= "mb-2">  
+        <%= c.description %>
+      </p>
 
+      <p class= "mb-3">
+        <%=c.created_at.strftime("%d/%m/%Y %H:%M") %>
+      </p>
+
+      <div class="flex gap-2">
+        <%= link_to "Edit", edit_post_comment_path(@post,c), 
+        class: "bg-blue-600 text-white px-4 py-2 rounded" %>
+
+        <%= link_to "Delete", post_comment_path(@post,c), class: "bg-red-600 text-white px-4 py-2 rounded",
+          data: {turbo_method: :delete, turbo_confirm: "Sure?"} 
+        %> 
+      </div>
+    </div>
   <%end%>
+  </section>
 
 
-<%= link_to "Back to posts", posts_path %>
+<%= link_to "Back to posts", posts_path, class: "inline-block bg-gray-500 text-white px-4 py-2 rounded" %>
 </p>

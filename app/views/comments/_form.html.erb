@@ -1,7 +1,12 @@
 <%=form_with(model: [@post, @comment])  do |f| %>
-  <%= f.label :Description %>
-  <%= f.text_field :description %>
+  <div class="mb-4">
+  <%= f.label :description, class: "block" %>
+  <%= f.text_area :description, class: "block border w-full px-3 py-2 rounded"%>
+  </div>
 
 
-  <%= f.submit(@comment.persisted? ? "Update comment" : "Create comment") %>
+  <%= f.submit(
+    @comment.persisted? ? "Update comment" : "Create comment",
+    class: "bg-blue-600 text-white px-4 py-2 rounded cursor-pointer mb-4") 
+  %>
 <% end %>

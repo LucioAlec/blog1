@@ -1,7 +1,11 @@
-<h1 class="text-3x1 font-bold mb-6"> Posts </h1>
+<h1 class="text-3xl font-bold mb-6 mt-2 "> Posts </h1>
+
+
 <% @posts.each do |p| %>
-  <h2><%= link_to p.title, post_path(p) %> </h2>
+  <h2 class="mb-3"><%= link_to p.title, post_path(p), class: "inline-block bg-blue-600 text-white px-4 py-2 rounded" %> </h2>
 
   <% end %>
 
-<%= link_to "Create a Post", new_post_path, class: "button" %>
+<p> <%= link_to "Create a Post", new_post_path,
+    class: "inline-block bg-green-600 text-white px-4 py-2 rounded" %> 
+</p>
