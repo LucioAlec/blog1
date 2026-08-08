@@ -9,7 +9,7 @@ Bundler.require(*Rails.groups)
 module Blog1
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 8.0
+    config.load_defaults 8.1
 
     config.time_zone = "Brasilia"
 
