@@ -1,4 +1,4 @@
-<h1 class="text-3xl font-bold mb-6 mt-2 "> Posts </h1>
+<h1 class="text-3xl font-bold mb-6"> Posts </h1>
 
 
 <% @posts.each do |p| %>
@@ -7,5 +7,5 @@
   <% end %>
 
 <p> <%= link_to "Create a Post", new_post_path,
-    class: "inline-block bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded transition duration-500" %> 
+    class: "mt-4 inline-block bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded transition duration-500" %> 
 </p>
