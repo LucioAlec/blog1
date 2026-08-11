@@ -1,18 +1,18 @@
 <%= form_with model: @post do |f| %>
   <div class="mb-4">
-  <%= f.label :title, class: "block " %>
-  <%= f.text_field :title, class: "block border w-full px-3 py-2 rounded" %>
+    <%= f.label :title, class: "block " %>
+    <%= f.text_field :title, class: "block border w-full px-3 py-2 rounded focus:ring-2 focus:ring-green-500" %>
   </div>
 
   <div class="mb-4">
-  <%= f.label :description, class: "block " %>
-  <%= f.text_area :description, rows:6, class: "block border w-full px-3 py-2 rounded" %>
+    <%= f.label :description, class: "block " %>
+    <%= f.text_area :description, rows:6, class: "block border w-full px-3 py-2 rounded focus:ring-2 focus:ring-green-500" %>
   </div>
 
 
   <%= f.submit(
     @post.persisted? ? "Update Post" : "Create Post",
-    class: "bg-blue-600 text-while px-4 py-2 rounded cursor-pointer mb-4")
+    class: "bg-green-600 hover:bg-green-700 text-while px-4 py-2 rounded cursor-pointer mb-4 transition duration-500")
   %>
   
   <%end%>

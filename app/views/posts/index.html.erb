@@ -2,10 +2,10 @@
 
 
 <% @posts.each do |p| %>
-  <h2 class="mb-3"><%= link_to p.title, post_path(p), class: "inline-block bg-blue-600 text-white px-4 py-2 rounded" %> </h2>
+  <h2 class="mb-3"><%= link_to p.title, post_path(p), class: "inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition duration-500" %> </h2>
 
   <% end %>
 
 <p> <%= link_to "Create a Post", new_post_path,
-    class: "inline-block bg-green-600 text-white px-4 py-2 rounded" %> 
+    class: "inline-block bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded transition duration-500" %> 
 </p>
