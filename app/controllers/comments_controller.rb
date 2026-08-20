@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
     if @comment.update(comment_params)
       redirect_to @post, notice: "Comment updated successfully"
     else
-      flash.now[:alert] = "Post not updated"
+      flash.now[:alert] = "Comment not updated"
       render :edit, status: :unprocessable_entity
     end
   end
